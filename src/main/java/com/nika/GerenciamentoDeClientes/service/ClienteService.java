@@ -13,11 +13,11 @@ public class ClienteService {
     @Autowired
     private ClienteRepository repository;
 
-    private ClienteModel criar(ClienteModel cliente){
+    public ClienteModel criar(ClienteModel cliente){
         return repository.save(cliente);
     }
 
-    private ClienteModel atualizar(Long id, ClienteModel clienteAtualizado){
+    public ClienteModel atualizar(Long id, ClienteModel clienteAtualizado){
         Optional<ClienteModel> clienteExistente = repository.findById(id);
         if(clienteExistente.isPresent()){
             ClienteModel cliente = clienteExistente.get();
@@ -32,15 +32,15 @@ public class ClienteService {
         }
     }
 
-    private List<ClienteModel> listar(){
+    public List<ClienteModel> listar(){
         return repository.findAll();
     }
 
-    private ClienteModel buscar(long id){
+    public ClienteModel buscar(long id){
         return repository.findById(id).orElse(null);
     }
 
-    private void deletar(Long id){
+    public void deletar(Long id){
         repository.deleteById(id);
     }
 
